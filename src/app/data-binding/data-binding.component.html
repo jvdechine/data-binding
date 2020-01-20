@@ -1,0 +1,39 @@
+<!--article>
+  <h3>Class e Style Binding</h3>
+  <div>
+    Selecione uma Classe:
+    <select #classe (change)="0">
+      <option value="alert-success">Sucesso</option>
+      <option value="alert-info">Informação</option>
+      <option value="alert-warning">Aviso</option>
+      <option value="alert-danger">Perigo</option>
+    </select>
+    <br><br>
+    
+    <div class = "alert {{ classe.value }}" role="alert">Texto Colorido conforme Combo-box</div>
+    <div [class.alert-success] = "classe.value == 'alert-success'" class="alert" role="alert">Sucesso</div>
+    <div [class.alert-info]    = "classe.value == 'alert-info'"    class="alert" role="alert">Info</div>
+    <div [class.alert-warning] = "classe.value == 'alert-warning'" class="alert" role="alert">Alerta</div>
+    <div [class.alert-danger]  = "classe.value == 'alert-danger'"  class="alert" role="alert">Perigo</div>
+
+    <div [style.display]  = "classe.value == 'alert-danger' ? 'block' : 'none'"  class="alert" role="alert">Erro</div>
+  </div>
+</article-->
+
+<!--article>
+    <h3>Event Binding</h3>
+    <br><br>
+    <button class="btn btn-primary" (click)="botaoClicado()">Me Clique</button>
+    <br><br>
+    <input #campoInput type="text" (keyup)="onKeyUp($event)" (blur)="onEnter(campoInput.value)" (keyup.enter)="onEnter($event.target.value)"/>
+    <p>Valor Atual: {{ valorAtual }}</p>
+    <p>Valor Salvo: {{ valorSalvo }}</p>
+</article-->
+
+<article>
+    <h3>Two-Way Data Binding</h3>
+    <input type="text" [value]="nome" (input)="nome = $event.target.value"/>
+    <input type="text" [ngModel]="nome" (ngModelChange)="nome = $event"/>
+    <input type="text" [(ngModel)]="nome"/>
+    <p>Você digitou o nome {{ nome }}</p>
+</article>
